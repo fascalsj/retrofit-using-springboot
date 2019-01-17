@@ -19,4 +19,5 @@ public class CountryResponse {
     public String capital;
     public String region;
     public String subregion;
+    public String nativeName;
 }

@@ -15,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.belajar.retrofit.client.CountryClient;
+import org.springframework.web.bind.annotation.PathVariable;
 
 /**
  *
@@ -32,6 +33,18 @@ public class CountryController {
         Gson gson = new Gson();
         String jsonInString;
         jsonInString = gson.toJson(resp.listAll().execute().body());
+        
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(jsonInString);
+    }
+   
+    @GetMapping(value = "/all_country_by_name/{name}")
+    public ResponseEntity allCountryByName(@PathVariable("name") String name) throws IOException {
+        Gson gson = new Gson();
+        String jsonInString;
+        jsonInString = gson.toJson(resp.listAllCountryName(name).execute().body());
         
         return ResponseEntity
                 .status(HttpStatus.OK)
