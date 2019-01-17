@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.belajar.teknologi.controller;
+package com.belajar.retrofit.controller;
 
-import com.belajar.teknologi.client.ResponseInterface;
 import com.google.gson.Gson;
 import java.io.IOException;
 import lombok.extern.slf4j.Slf4j;
@@ -15,6 +14,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+import com.belajar.retrofit.client.CountryClient;
 
 /**
  *
@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class CountryController {
 
     @Autowired
-    ResponseInterface resp;
+    CountryClient resp;
     
     @GetMapping(value = "/all_country")
     public ResponseEntity allCountry() throws IOException {

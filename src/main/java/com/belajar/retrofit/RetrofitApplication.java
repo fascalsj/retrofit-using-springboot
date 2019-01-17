@@ -1,12 +1,12 @@
-package com.belajar.teknologi;
+package com.belajar.retrofit;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class TeknologiApplication {
+public class RetrofitApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(TeknologiApplication.class, args);
+        SpringApplication.run(RetrofitApplication.class, args);
     }
 }

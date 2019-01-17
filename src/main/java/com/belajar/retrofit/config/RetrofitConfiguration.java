@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.belajar.teknologi.config;
+package com.belajar.retrofit.config;
 
-import com.belajar.teknologi.client.ResponseInterface;
 import java.util.concurrent.TimeUnit;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -17,6 +16,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import com.belajar.retrofit.client.CountryClient;
 
 /**
  *
@@ -24,11 +24,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 @Configuration
 @Component
-public class RetroConfig {
+public class RetrofitConfiguration {
      @Bean
-    public ResponseInterface countriesApiClientConfig() {
+    public CountryClient countriesApiClientConfig() {
         String baseUrl = "https://restcountries.eu/rest/";
-        final Logger logger = LoggerFactory.getLogger(ResponseInterface.class);
+        final Logger logger = LoggerFactory.getLogger(CountryClient.class);
 
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
                 .connectTimeout(60, TimeUnit.MINUTES)
@@ -37,7 +37,6 @@ public class RetroConfig {
                     long startTime = System.currentTimeMillis();
                     logger.info("Sending request to url: {}", request.url());
                     Response response = chain.proceed(request);
-                    
                     long endTime = System.currentTimeMillis() - startTime;
                     logger.info("Received response for call with duration "+endTime+":  {}", request.url());
                     return response;
@@ -49,6 +48,6 @@ public class RetroConfig {
                  .addConverterFactory(GsonConverterFactory.create())
                 .baseUrl(baseUrl)
                 .build()
-                .create(ResponseInterface.class);
+                .create(CountryClient.class);
     }
 }

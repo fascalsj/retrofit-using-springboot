@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.belajar.teknologi.client;
+package com.belajar.retrofit.client;
 
-import com.belajar.teknologi.response.CountryResponse;
+import com.belajar.retrofit.response.CountryResponse;
 import java.util.List;
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -14,7 +14,7 @@ import retrofit2.http.GET;
  *
  * @author fascal
  */
-public interface ResponseInterface {
+public interface CountryClient {
     @GET("v2/all")
     Call<List> listAll();
     
